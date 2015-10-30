@@ -12,7 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
-import android.widget.ListView;import java.lang.Math;import java.lang.Override;import java.lang.String;
+import android.widget.ListView;
 
 public class DragListView extends ListView {
 
@@ -23,8 +23,9 @@ public class DragListView extends ListView {
     //
     private int mLayoutYOffset;
     private int mDragPointToTop;
-    private DragListener mDragListener;
+    //
     private DragHelper mDragHelper;
+    private DragListener mDragListener;
 
     private static final int ANIMATION_DURATION = 200;
 
@@ -61,7 +62,7 @@ public class DragListView extends ListView {
                 View trigger = mDragListener.getTriggerView(child);
                 if (trigger != null && trigger.getLeft() < x && x < trigger.getRight()) {
                     child.setDrawingCacheEnabled(true);
-                    Bitmap bm = Bitmap.createBitmap(child.getDrawingCache(true));// 根据cache创建一个新的bitmap对象.
+                    Bitmap bm = Bitmap.createBitmap(child.getDrawingCache(true));
                     child.setDrawingCacheEnabled(false);
                     startDrag(bm, y);
                     return false;
